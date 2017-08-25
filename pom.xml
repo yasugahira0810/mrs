@@ -50,7 +50,7 @@
 		<dependency>
 			<groupId>org.thymeleaf.extras</groupId>
 			<artifactId>thymeleaf-extras-java8time</artifactId>
-			<version>3.0.0.RELEASE</version> <!-- バージョンは20170820時点の最新バージョン -->
+			<version>2.1.0.RELEASE</version> <!-- バージョンは執筆時点の最新バージョン -->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
