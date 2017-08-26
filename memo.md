@@ -35,6 +35,42 @@ CREATE DATABASE mrs WITH OWNER = mrs ENCODING = 'UTF8' TABLESPACE = pg_default L
     複合主キーを扱うために、複合主キークラスとしてReservableRoomIdを用意している。定石なのか？
   + その他JPA2.1の制約のために、本質的ではないが作成が必要な3つのエンティティ。
 
+# 2017/08/26
+
+## 14.2.7 会議室一覧表示機能の実装
+
+### リポジトリクラスの作成
+
+- [参考](http://terasolunaorg.github.io/guideline/5.3.0.RELEASE/ja/ImplementationAtEachLayer/DomainLayer.html#repository)
+- リポジトリの役割は２つ。
+  + Serviceに対して、Entityのライフサイクルを制御するための操作（Repositoryインタフェース）を提供する。
+  + Entityを永続化する処理(Repositoryインタフェースの実装クラス)を提供する。
+- リポジトリは基本エンティティと１：１で作るものっぽい。
+- JPAの書き方が使われていて、経験ないと辛そうな感じに見える。
+
+### サービスクラスの作成
+
+- サービスの役割は２つ。
+  + Controllerに対して業務ロジックを提供する。
+  + トランザクション境界を宣言する。
+- Service = ビジネスロジック
+- リポジトリはサービスに手段を提供するためにある。  
+  だからサービスはリポジトリをimportしている。
+
+### コントローラクラスおよびHTMLの作成
+
+- コントローラはモデルとサービスをimportしているが、リポジトリはimportしていない。なるほど疎結合だ。
+- メソッドの戻り値はURLになっている。
+
+### まとめ
+
+- とりあえず１機能作る時は以下の流れで進めるっぽいことがわかった。
+  + エンティティを作成する。
+  + エンティティを操作するためのCRUD操作（リポジトリ）を作成する。
+  + ビジネスロジック（サービス）を実装する。
+  + Viewへの振り分け処理（コントローラ）を実装する。
+- この例はJPAだが、自分でアプリ実装する時はMyBatisで実装予定だから、そこは要変更。
+
 # 参考サイト
 
 - [TERASOLUNA開発者ガイド 3.2. ドメイン層の開発](http://terasolunaorg.github.io/guideline/5.3.0.RELEASE/ja/ImplementationAtEachLayer/DomainLayer.html)
