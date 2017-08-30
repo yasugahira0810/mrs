@@ -75,8 +75,15 @@ CREATE DATABASE mrs WITH OWNER = mrs ENCODING = 'UTF8' TABLESPACE = pg_default L
 
 - [TERASOLUNA開発者ガイド 3.2. ドメイン層の開発](http://terasolunaorg.github.io/guideline/5.3.0.RELEASE/ja/ImplementationAtEachLayer/DomainLayer.html)
 
+# DI
+
+- SpringではApplicatonContextがDIコンテナの役割を担う。
+
 # 用語集
 
-|用語|略称|説明|
-|---|---|---|
-|エンティティ|-|DBのテーブルとして扱われることが多い。テーブルとする場合は主キーの設定が必須。|
+|用語|略称|説明|出典|
+|---|---|---|---|
+|エンティティ|-|DBのテーブルとして扱われることが多い。テーブルとする場合は主キーの設定が必須。||
+|Bean|-|DIコンテナに登録するコンポーネント|Spring徹底入門|
+|Bean定義||Configurationのこと。Java(@Configuration)、XML(<beans>)、アノテーション(@Component)ベースがある。|Spring徹底入門|
+|ルックアップ|-|DIコンテナからBeanを取得すること|Spring徹底入門|
